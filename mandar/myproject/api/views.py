@@ -1,15 +1,21 @@
-from rest_framework.response import Response # takes in python data or serialized data and return as json
+from rest_framework.response import (
+    Response,
+)  # takes in python data or serialized data and return as json
 from rest_framework.decorators import api_view
 from base.models import Item
-from  .serializers import ItemSerializer
+from .serializers import ItemSerializer
 
-@api_view(['GET'])
+
+@api_view(["GET"])
 def getData(request):
     items = Item.objects.all()
     serializer = ItemSerializer(items, many=True)
-    return Response(serializer.data) # returning dictionary person inside Response, it will be returned as JSON
+    return Response(
+        serializer.data
+    )  # returning dictionary person inside Response, it will be returned as JSON
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 def addItem(request):
     serializer = ItemSerializer(data=request.data)
     if serializer.is_valid():
