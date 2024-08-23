@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
-from einat_tutorial.quickstart.serializers import GroupSerializer, UserSerializer
+from quickstart.serializers import GroupSerializer, UserSerializer
 # Create your views here.
 
 class UserViewSet(viewsets.ModelViewSet):
